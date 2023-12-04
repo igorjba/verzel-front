@@ -1,0 +1,32 @@
+{
+  "name": "verzel-front",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@radix-ui/react-dialog": "^1.0.5",
+    "@types/react-router-dom": "^5.3.3",
+    "@vitejs/plugin-react": "^4.2.1",
+    "axios": "^1.6.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1",
+    "styled-components": "^6.1.1",
+    "use-context-selector": "^1.4.1",
+    "vite": "^5.0.5",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/react-dom": "^18.2.17",
+    "@types/styled-components": "^5.1.32"
+  }
+}
