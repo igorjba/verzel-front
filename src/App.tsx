@@ -2,15 +2,16 @@ import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { Router } from './Router';
 import { GlobalStyle } from './styles/global/index';
-import { adaptedTheme } from './styles/themes/default';
+import { defaultTheme } from './styles/themes/defaultTheme';
+import { AppProvider } from './store/contexts';
 
 export function App() {
   return (
-    <ThemeProvider theme={adaptedTheme}>
+    <AppProvider>
       <GlobalStyle />
       <BrowserRouter>
         <Router />
       </BrowserRouter>
-    </ThemeProvider>
+    </AppProvider>
   );
 }
