@@ -10,6 +10,8 @@ declare module 'styled-components' {
           alert: string;
           light: string, 
           dark: string;
+          medium: string;
+          input: string;
         },
         shadow: {
             outline: string;

@@ -3,16 +3,18 @@ export const darkTheme = {
     background: {
       primary: '#1e1e1e',
       secondary: '#2a2a2a',
-      accent: '#507dbc',
+      accent: '#bcd8ff',
       alert: '#e06c75',
       light: '#ebebeb', 
       dark: '#000000', 
+      medium:'#c7c7c7',
+      input: '#c7c7c7',
     },
     shadow: {
       outline: '#ffffff'
     },
     text: {
-      primary: '#c7c7c7',
+      primary: '#ffffff',
       primaryConstant: '#333333',
       secondary: '#a1a1a1',
       accent: '#4e88b4',

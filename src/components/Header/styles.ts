@@ -3,7 +3,12 @@ import * as Avatar from '@radix-ui/react-avatar';
 import * as Collapsible from '@radix-ui/react-collapsible';
 import * as Switch from '@radix-ui/react-switch';
 import styled from 'styled-components';
-import headerLogo from '../../assets/logoDark.svg';
+import headerLogoDark from '../../assets/logoDark.svg';
+import headerLogoLight from '../../assets/logoLight.svg';
+
+interface LogoContainerProps {
+  theme: string;
+}
 
 export const HeaderContainer = styled.header`
   display: flex;
@@ -30,12 +35,12 @@ export const HeaderContent = styled.div`
   height: 100%;
 `
 
-export const LogoContainer = styled.div`
+export const LogoContainer = styled.div<LogoContainerProps>`
   width: 100%;
   max-width: 9rem;
   height: 100%;
 
-  background-image: url(${headerLogo});
+  background-image: url(${props => props.theme === 'dark' ? headerLogoLight : headerLogoDark});
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -70,6 +75,7 @@ export const HeaderNavbar = styled.div`
     cursor: pointer;
 
     background-color: ${(props) => props.theme['colors'].transparent.normal};
+    color: ${(props) => props.theme['colors'].text.primary};
 
     &:hover {
       font-weight: 500;
@@ -92,11 +98,14 @@ export const KavakAppButton = styled.button`
 `
 
 export const StyledCaretDown = styled(CaretDown)`
+margin-left: 0.5rem;
 
 color: ${(props) => props.theme['colors'].background.accent};
 `
 
 export const StyledCaretUp = styled(CaretUp)`
+margin-left: 0.5rem;
+
 color: ${(props) => props.theme['colors'].background.accent};
 `
 
@@ -120,10 +129,12 @@ export const StyledCollapsibleContent = styled(Collapsible.Content)`
 position: absolute;
 top: 27px;
 right: -3px;
+z-index: 100;
 
 padding: 1rem;
 border-radius: .375rem;
 
+background-color: ${(props) => props.theme['colors'].background.primary};
 box-shadow: 0 .063rem .313rem #46464626,0 .125rem .125rem #46464626,0 .188rem .125rem -.125rem #46464626;
 
 white-space: nowrap;

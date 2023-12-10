@@ -6,7 +6,9 @@ export const defaultTheme = {
         accent: '#3374db',
         alert: '#d3291d',
         light: '#ebebeb', 
-        dark: '#000000', 
+        dark: '#000000',
+        medium:'#c7c7c7',
+        input: '#ffffff',
       },
       shadow: {
         outline: '#d4cfc9'

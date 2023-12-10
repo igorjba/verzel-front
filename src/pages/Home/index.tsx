@@ -1,7 +1,8 @@
 
 import { Header } from '../../components/Header'
-import { SearchBar } from './SearchBar'
-import { HomeContainer } from './styles'
+import { VehicleGrid } from './components/VehicleGrid'
+import { SearchBar } from './components/SearchBar'
+import { HomeContainer, StyledTitle, StyledTitleContainer } from './styles'
 
 export function Home() {
 
@@ -9,6 +10,10 @@ export function Home() {
     <HomeContainer>
       <Header />
       <SearchBar />
+      <StyledTitleContainer>
+        <StyledTitle>Carros usados</StyledTitle>
+      </StyledTitleContainer>
+      <VehicleGrid />
     </HomeContainer>
   )
 }

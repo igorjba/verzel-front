@@ -23,16 +23,20 @@ export function Header() {
     return (
         <HeaderContainer>
             <HeaderContent>
-                <LogoContainer />
+                <LogoContainer theme={theme} />
                 <TooltipContainer>
                     <HeaderNavbar>
                         <BuyCarButton onClick={() => handleRedirect('')}> Comprar carro</BuyCarButton>
                         <SellCarButton onClick={() => handleRedirect('')}>Vender carro</SellCarButton>
                         <KavakAppButton onClick={() => handleRedirect('')}>App Kavak</KavakAppButton>
                         <StyledCollapsibleRoot open={open} onOpenChange={setOpen}>
-                            <StyledCollapsibleTrigger className={open ? 'open' : ''}>Sobre nós
-                                <button className="IconButton">{open ? <StyledCaretUp weight='bold' size={16} /> : <StyledCaretDown weight='bold' size={16} />}</button>
+                            <StyledCollapsibleTrigger asChild className={open ? 'open' : ''}>
+                                <button>
+                                    Sobre nós
+                                    {open ? <StyledCaretUp weight='bold' size={16} /> : <StyledCaretDown weight='bold' size={16} />}
+                                </button>
                             </StyledCollapsibleTrigger>
+
                             <StyledCollapsibleContent>
                                 <div className="Repository">
                                     <a href="">Onde estamos</a>
