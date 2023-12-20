@@ -139,12 +139,65 @@ export const VehicleCard = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 
   width: 23%;
 
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme['colors'].background.secondary};
 `;
+
+export const VehicleAdminButtons = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  width: 100%;
+
+  border-radius: 10px 10px 0 0;
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 2rem;
+    height: 2rem;
+    border: none;
+
+    cursor: pointer;
+
+    transition: transform 0.1s, box-shadow 0.1s;
+
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+
+    &:focus {
+      border: none;
+      box-shadow: none;
+    }
+
+  }
+`;
+
+export const EditVehicleButton = styled.button`
+color: ${(props) => props.theme['colors'].background.accent};
+
+`;
+
+export const DeleteVehicleButton = styled.button`
+color: ${(props) => props.theme['colors'].background.danger};
+`;
+
 
 export const VehicleImage = styled.img`
 width: 100%;

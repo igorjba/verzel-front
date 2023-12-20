@@ -35,6 +35,7 @@ export const StyledTitleContainer = styled.div`
 
     &:hover {
       font-weight: 500;
+      text-decoration: underline;
     }
 
     &:focus{

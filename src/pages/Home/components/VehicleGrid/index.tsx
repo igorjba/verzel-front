@@ -1,9 +1,14 @@
+import { PencilSimpleLine, TrashSimple } from '@phosphor-icons/react';
 import { useEffect } from 'react';
-import { useVehiclesList } from '../../../../store/hooks/useVehicleList';
-import { FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledVehicleGrid, TooltipVehicleContainer, VehicleBrand, VehicleCard, VehicleGridContainer, VehicleImage, VehicleName, VehicleValue } from './styles';
 import fiatLight from "../../../../assets/fiat.svg";
+import { useAuth } from '../../../../store/contexts/authContext';
+import { useVehiclesList } from '../../../../store/hooks/useVehicleList';
+import { DeleteVehicleButton, EditVehicleButton, FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledVehicleGrid, TooltipVehicleContainer, VehicleAdminButtons, VehicleBrand, VehicleCard, VehicleGridContainer, VehicleImage, VehicleName, VehicleValue } from './styles';
+
+
 export function VehicleGrid() {
     const { vehicles, loadVehicles } = useVehiclesList();
+    const { authData } = useAuth();
 
     useEffect(() => {
         if (vehicles === undefined) {
@@ -41,6 +46,12 @@ export function VehicleGrid() {
             <StyledVehicleGrid>
                 {vehicles?.map(vehicle => (
                     <VehicleCard key={vehicle.id}>
+                        {authData?.user.role === 'ADMIN' && (
+                            <VehicleAdminButtons>
+                                <EditVehicleButton><PencilSimpleLine size={24} /></EditVehicleButton>
+                                <DeleteVehicleButton><TrashSimple size={24} /></DeleteVehicleButton>
+                            </VehicleAdminButtons>
+                        )}
                         <VehicleImage src={fiatLight} alt={"SuperFast"} />
                         <VehicleBrand>{vehicle.brand} {vehicle.model}</VehicleBrand>
                         <VehicleName>{vehicle.name}</VehicleName>
