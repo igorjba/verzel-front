@@ -262,7 +262,8 @@ export const SignUpButton = styled.button`
 export const LoginButton = styled.button`
 
 `
-
+export const LogoutButton = styled.button`
+`;
 
 
 

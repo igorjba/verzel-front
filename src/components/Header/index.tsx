@@ -1,30 +1,51 @@
 
-import { UserCircle } from '@phosphor-icons/react';
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { UserCircle, SignOut } from '@phosphor-icons/react';
 import { useContextSelector } from 'use-context-selector';
 import { ThemeContext } from '../../store/contexts/themeContext';
-import { useLocation } from 'react-router-dom';
-import { BuyCarButton, HeaderAvatarFallback, HeaderAvatarImage, HeaderAvatarRoot, HeaderContainer, HeaderContent, HeaderNavbar, HeaderProfile, KavakAppButton, LoginButton, LogoContainer, SellCarButton, SignUpButton, StyledCaretDown, StyledCaretUp, StyledCollapsibleContent, StyledCollapsibleRoot, StyledCollapsibleTrigger, ToggleThemeButton, ToggleThemeSwitchRoot, ToggleThemeSwitchThumb, TooltipContainer } from './styles';
+import { useAuth } from '../../store/contexts/authContext';
+import { useNavigate, useLocation } from 'react-router-dom';
+import {
+    HeaderContainer, HeaderContent, HeaderNavbar, HeaderProfile,
+    BuyCarButton, SellCarButton, KavakAppButton, LoginButton, SignUpButton,
+    LogoContainer, StyledCaretDown, StyledCaretUp, StyledCollapsibleContent,
+    StyledCollapsibleRoot, StyledCollapsibleTrigger, ToggleThemeButton,
+    ToggleThemeSwitchRoot, ToggleThemeSwitchThumb, TooltipContainer,
+    HeaderAvatarRoot, HeaderAvatarImage, HeaderAvatarFallback, LogoutButton
+} from './styles';
 
 export function Header() {
     const [open, setOpen] = useState(false);
     const theme = useContextSelector(ThemeContext, context => context.theme);
     const toggleTheme = useContextSelector(ThemeContext, context => context.toggleTheme);
-
+    const { authData, clearAuthData } = useAuth();
+    const navigate = useNavigate();
     const location = useLocation();
 
     const isDarkMode = theme === 'dark';
+    const isLoggedIn = Boolean(authData);
 
-    const userName = "";
+    const userName = authData?.user.name || "";
     const userImage = "";
-    const userInitials = userName.split(" ").map((n) => n[0]).join("").toUpperCase();
+
+    const userInitials = (() => {
+        if (!userName) {
+            return "";
+        }
+        const names = userName.trim().split(" ");
+        if (names.length > 1) {
+            return `${names[0][0]}${names[names.length - 1][0]}`;
+        }
+        return names[0][0];
+    })().toUpperCase();
 
     const handleRedirect = (url: string) => {
-        window.location.href = url;
+        navigate(url);
     };
 
-    const showSignUpButton = location.pathname !== "/sign-up";
-    const showLoginButton = location.pathname !== "/login";
+    const handleLogout = () => {
+        clearAuthData();
+    };
 
     return (
         <HeaderContainer>
@@ -76,15 +97,21 @@ export function Header() {
                         </HeaderAvatarRoot>
                     </HeaderProfile>
                     <HeaderNavbar>
-                        {showSignUpButton && (
-                            <SignUpButton onClick={() => handleRedirect('')}>
+                        {!isLoggedIn && location.pathname !== "/sign-up" && (
+                            <SignUpButton onClick={() => handleRedirect('/sign-up')}>
                                 Cadastre-se
                             </SignUpButton>
                         )}
-                        {showLoginButton && (
-                            <LoginButton onClick={() => handleRedirect('')}>
+                        {!isLoggedIn && location.pathname !== "/login" && (
+                            <LoginButton onClick={() => handleRedirect('/login')}>
                                 Login
                             </LoginButton>
+                        )}
+                        {isLoggedIn && (
+                            <LogoutButton onClick={handleLogout}>
+                                <SignOut size={24} />
+                                Sair
+                            </LogoutButton>
                         )}
                     </HeaderNavbar>
                 </TooltipContainer>

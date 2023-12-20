@@ -1,6 +1,8 @@
 import { ReactNode } from 'react';
 import { ThemeProvider } from './themeContext';
 import { UserSignUpProvider } from './userSignUpContext';
+import { LoginProvider } from './loginContext';
+import { AuthProvider } from './authContext';
 
 interface AppProviderProps {
   children: ReactNode
@@ -8,11 +10,13 @@ interface AppProviderProps {
 
 export function AppProvider({ children }: AppProviderProps) {
   return (
-    <ThemeProvider>
-      <UserSignUpProvider>
-        {children}
-      </UserSignUpProvider>
-    </ThemeProvider>
+    <AuthProvider>
+      <ThemeProvider>
+        <UserSignUpProvider>
+          {children}
+        </UserSignUpProvider>
+      </ThemeProvider>
+    </AuthProvider>
   );
 }
 
