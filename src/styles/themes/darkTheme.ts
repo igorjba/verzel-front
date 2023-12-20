@@ -14,6 +14,8 @@ export const darkTheme = {
       medium:'#c7c7c7',
       input: '#c7c7c7',
       inputReversed: '#ffffff',
+      danger: '#d42525',
+      success: '#009f66',
     },
     shadow: {
       outline: '#ffffff',
@@ -46,6 +48,6 @@ export const darkTheme = {
     }
   },
   fontFamily: {
-    primary: "'Montserrat', sans-serif"
+    primary: "'Vazirmatn', 'Roboto', sans-serif"
   }
 } as const;

@@ -14,6 +14,8 @@ export const defaultTheme = {
       medium:'#c7c7c7',
       input: '#ffffff',
       inputReversed: '#c7c7c7',
+      danger: '#d42525',
+      success: '#009f66',
     },
     shadow: {
       outline: '#d4cfc9',

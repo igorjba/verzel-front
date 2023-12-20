@@ -17,6 +17,8 @@ declare module 'styled-components' {
         medium: string;
         input: string;
         inputReversed: string;
+        danger: string;
+        success: string;
       },
       shadow: {
         outline: string;

@@ -178,5 +178,9 @@ width: 100%;
 border-top: 1px solid ${(props) => props.theme['colors'].background.secondary};
 
 font-weight: 700;
+
+span {
+  font-size: 1.75rem;
+}
 `;
 

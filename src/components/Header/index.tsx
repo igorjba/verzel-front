@@ -3,12 +3,15 @@ import { UserCircle } from '@phosphor-icons/react';
 import { useState } from 'react';
 import { useContextSelector } from 'use-context-selector';
 import { ThemeContext } from '../../store/contexts/themeContext';
+import { useLocation } from 'react-router-dom';
 import { BuyCarButton, HeaderAvatarFallback, HeaderAvatarImage, HeaderAvatarRoot, HeaderContainer, HeaderContent, HeaderNavbar, HeaderProfile, KavakAppButton, LoginButton, LogoContainer, SellCarButton, SignUpButton, StyledCaretDown, StyledCaretUp, StyledCollapsibleContent, StyledCollapsibleRoot, StyledCollapsibleTrigger, ToggleThemeButton, ToggleThemeSwitchRoot, ToggleThemeSwitchThumb, TooltipContainer } from './styles';
 
 export function Header() {
     const [open, setOpen] = useState(false);
     const theme = useContextSelector(ThemeContext, context => context.theme);
     const toggleTheme = useContextSelector(ThemeContext, context => context.toggleTheme);
+
+    const location = useLocation();
 
     const isDarkMode = theme === 'dark';
 
@@ -19,6 +22,9 @@ export function Header() {
     const handleRedirect = (url: string) => {
         window.location.href = url;
     };
+
+    const showSignUpButton = location.pathname !== "/sign-up";
+    const showLoginButton = location.pathname !== "/login";
 
     return (
         <HeaderContainer>
@@ -70,8 +76,16 @@ export function Header() {
                         </HeaderAvatarRoot>
                     </HeaderProfile>
                     <HeaderNavbar>
-                        <SignUpButton onClick={() => handleRedirect('')}>Cadastre-se</SignUpButton>
-                        <LoginButton onClick={() => handleRedirect('')}>Login</LoginButton>
+                        {showSignUpButton && (
+                            <SignUpButton onClick={() => handleRedirect('')}>
+                                Cadastre-se
+                            </SignUpButton>
+                        )}
+                        {showLoginButton && (
+                            <LoginButton onClick={() => handleRedirect('')}>
+                                Login
+                            </LoginButton>
+                        )}
                     </HeaderNavbar>
                 </TooltipContainer>
             </HeaderContent >

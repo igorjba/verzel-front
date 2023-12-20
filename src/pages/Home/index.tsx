@@ -13,6 +13,7 @@ export function Home() {
       <SearchBar />
       <StyledTitleContainer>
         <StyledTitle>Carros usados</StyledTitle>
+        <button>Cadastrar Carro</button>
       </StyledTitleContainer>
       <VehicleGrid />
       <Footer />

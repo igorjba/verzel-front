@@ -44,7 +44,7 @@ export function VehicleGrid() {
                         <VehicleImage src={fiatLight} alt={"SuperFast"} />
                         <VehicleBrand>{vehicle.brand} {vehicle.model}</VehicleBrand>
                         <VehicleName>{vehicle.name}</VehicleName>
-                        <VehicleValue>R${vehicle.value.toFixed(2)}</VehicleValue>
+                        <VehicleValue>R$<span>{vehicle.value}</span></VehicleValue>
                     </VehicleCard>
                 ))}
             </StyledVehicleGrid>
