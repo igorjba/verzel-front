@@ -75,6 +75,11 @@ export const RemoveFiltersButton = styled.button`
   color: ${(props) => props.theme['colors'].text.secondary};
 
   cursor: pointer;
+
+  &:hover {
+    color: ${(props) => props.theme['colors'].text.primary};
+    text-decoration: underline;
+  }
 `;
 
 export const ResultsText = styled.span`
@@ -84,7 +89,7 @@ export const ResultsText = styled.span`
 `;
 
 export const SortDropdownContainer = styled.div`
- display: flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
