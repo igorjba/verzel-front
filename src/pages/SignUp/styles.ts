@@ -17,7 +17,12 @@ export const SignUpContent = styled.div`
   justify-content: center;
 
   width: 100%;
-  height: 100%;
+  max-width: 80.5rem;
+  min-height: calc(100vh - 5.26rem);
+
+  @media (max-width: 992px){
+  min-height: calc(100vh - 3.5rem);
+    }
 `;
 
 export const SignUpImageContainer = styled.div`

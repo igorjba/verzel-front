@@ -14,6 +14,7 @@ display: flex;
 justify-content: center;
 
 width: 100%;
+  max-width: 80.5rem;
 min-height: calc(100vh - 5.26rem);
 
 @media (max-width: 992px){

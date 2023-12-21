@@ -76,11 +76,51 @@
 ## 📸 **Imagens do App**
 
 <details>
-<summary><strong>Veja o App em Ação</strong></summary>
+<summary><strong>Tela de Login</strong></summary>
 
-- ![Login](url-para-imagem-de-login)
-- ![Dashboard](url-para-imagem-de-dashboard)
-- ![Detalhes do Veículo](url-para-imagem-de-detalhes-do-veículo)
+![Login](./public/login.png)
+
+Descrição: Interface de login para acesso ao sistema.
+</details>
+
+<details>
+<summary><strong>Tela de Cadastro</strong></summary>
+
+![Cadastro](./public/signUp.png)
+
+Descrição: Página para registro de novos usuários.
+</details>
+
+<details>
+<summary><strong>Dashboard - Visualização sem Login (Header)</strong></summary>
+
+![Dashboard Sem Logar Header](./public/dashboardSemLoginHeader.png)
+
+Descrição: Visão do dashboard sem estar logado, mostrando o cabeçalho.
+</details>
+
+<details>
+<summary><strong>Dashboard - Visualização sem Login (Footer)</strong></summary>
+
+![Dashboard Sem Logar Footer](./public/dashboardSemLoginFooter.png)
+
+Descrição: Visão do dashboard sem estar logado, mostrando o rodapé.
+</details>
+
+<details>
+<summary><strong>Dashboard - Usuário Admin</strong></summary>
+
+![Dashboard Usuário Admin](./public/dashboardLogadoAdminHeader.png)
+
+Descrição: Interface do dashboard quando logado como usuário administrador.
+</details>
+
+<details>
+<summary><strong>Dashboard - Usuário Comum</strong></summary>
+
+![Dashboard Usuário Comum](./public/dashboardLogadoComumUserHeader.png)
+
+Descrição: Interface do dashboard quando logado como usuário comum.
 </details>
 
 <br />
