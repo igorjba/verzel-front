@@ -1,7 +1,7 @@
 import React from 'react';
-import { useLogin } from '../../store/contexts/loginContext';
-import { LoginContainer } from './styles';
 import { Header } from '../../components/Header';
+import { useLogin } from '../../store/contexts/loginContext';
+import { ErrorMessage, LoginButton, LoginContainer, LoginContent, LoginEmailInput, LoginEmailInputLabel, LoginForm, LoginFormTitle, LoginPasswordInput, LoginPasswordInputLabel } from './styles';
 
 export function Login() {
   const { email, setEmail, password, setPassword, errorMessage, login } = useLogin();
@@ -14,29 +14,31 @@ export function Login() {
   return (
     <LoginContainer>
       <Header />
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="email">E-mail</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Senha</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <button type="submit">Entrar</button>
-        {errorMessage && <p>{errorMessage}</p>}
-      </form>
+      <LoginContent>
+        <LoginForm onSubmit={handleSubmit}>
+          <LoginFormTitle>Entrar</LoginFormTitle>
+          <div>
+            <LoginEmailInputLabel htmlFor="email">E-mail</LoginEmailInputLabel>
+            <LoginEmailInput
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+          <div>
+            <LoginPasswordInputLabel htmlFor="password">Senha</LoginPasswordInputLabel>
+            <LoginPasswordInput
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
+          <LoginButton type="submit">Entrar</LoginButton>
+        </LoginForm>
+      </LoginContent>
     </LoginContainer>
   );
 }
-

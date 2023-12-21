@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import fiatLight from "../../../../assets/fiat.svg";
 import { useAuth } from '../../../../store/contexts/authContext';
 import { useVehiclesList } from '../../../../store/hooks/useVehicleList';
-import { DeleteVehicleButton, EditVehicleButton, FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledVehicleGrid, TooltipVehicleContainer, VehicleAdminButtons, VehicleBrand, VehicleCard, VehicleGridContainer, VehicleImage, VehicleName, VehicleValue } from './styles';
+import { DeleteVehicleButton, EditVehicleButton, FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledMapPin, StyledVehicleGrid, TooltipVehicleContainer, VehicleAdminButtons, VehicleBrand, VehicleCard, VehicleDataContainer, VehicleGridContainer, VehicleImage, VehicleLocation, VehicleLocationContainer, VehicleName, VehicleValue, VehicleValueContainer, VehicleValueTitle } from './styles';
 
 
 export function VehicleGrid() {
@@ -53,9 +53,20 @@ export function VehicleGrid() {
                             </VehicleAdminButtons>
                         )}
                         <VehicleImage src={fiatLight} alt={"SuperFast"} />
-                        <VehicleBrand>{vehicle.brand} {vehicle.model}</VehicleBrand>
-                        <VehicleName>{vehicle.name}</VehicleName>
-                        <VehicleValue>R$<span>{vehicle.value}</span></VehicleValue>
+                        <VehicleDataContainer>
+                            <VehicleBrand>{vehicle.brand} • {vehicle.model}</VehicleBrand>
+                            <VehicleName>{vehicle.name}</VehicleName>
+                        </VehicleDataContainer>
+                        <VehicleValueContainer>
+                            <VehicleValueTitle>Preço à vista</VehicleValueTitle>
+                            <VehicleValue>
+                                R$<h1>{vehicle.value}</h1>
+                            </VehicleValue>
+                        </VehicleValueContainer>
+                        <VehicleLocationContainer>
+                            <StyledMapPin size={24} weight='fill' />
+                            <VehicleLocation>São Paulo - SP</VehicleLocation>
+                        </VehicleLocationContainer>
                     </VehicleCard>
                 ))}
             </StyledVehicleGrid>

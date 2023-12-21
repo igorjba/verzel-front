@@ -38,16 +38,26 @@ export const CreateVehicleModal = () => {
                 <CloseIcon onClick={closeModal} weight='bold'></CloseIcon>
                 <CreateVehicleForm onSubmit={handleSubmit}>
                     <CreateVehicleFormTitle>Cadastrar Veículo</CreateVehicleFormTitle>
-                    <CreateVehicleInputNameLabel htmlFor="name">Nome:</CreateVehicleInputNameLabel>
-                    <CreateVehicleInputName type="text" placeholder="Nome" name="name" required />
-                    <CreateVehicleInputBrandLabel htmlFor="brand">Marca:</CreateVehicleInputBrandLabel>
-                    <CreateVehicleInputBrand type="text" placeholder="Marca" name="brand" required />
-                    <CreateVehicleInputModelLabel htmlFor="model">Modelo:</CreateVehicleInputModelLabel>
-                    <CreateVehicleInputModel type="text" placeholder="Modelo" name="model" required />
-                    <CreateVehicleInputValueLabel htmlFor="value">Valor:</CreateVehicleInputValueLabel>
-                    <CreateVehicleInputValue type="number" placeholder="Valor" name="value" required />
-                    <CreateVehicleInputPhotoLabel htmlFor="photo">Foto:</CreateVehicleInputPhotoLabel>
-                    <CreateVehicleInputPhoto type="text" placeholder="Foto (URL)" name="photo" disabled />
+                    <div>
+                        <CreateVehicleInputNameLabel htmlFor="name">Nome:</CreateVehicleInputNameLabel>
+                        <CreateVehicleInputName type="text" placeholder="Nome" name="name" required />
+                    </div>
+                    <div>
+                        <CreateVehicleInputBrandLabel htmlFor="brand">Marca:</CreateVehicleInputBrandLabel>
+                        <CreateVehicleInputBrand type="text" placeholder="Marca" name="brand" required />
+                    </div>
+                    <div>
+                        <CreateVehicleInputModelLabel htmlFor="model">Modelo:</CreateVehicleInputModelLabel>
+                        <CreateVehicleInputModel type="text" placeholder="Modelo" name="model" required />
+                    </div>
+                    <div>
+                        <CreateVehicleInputValueLabel htmlFor="value">Valor:</CreateVehicleInputValueLabel>
+                        <CreateVehicleInputValue type="number" placeholder="Valor" name="value" required />
+                    </div>
+                    <div>
+                        <CreateVehicleInputPhotoLabel htmlFor="photo">Foto:</CreateVehicleInputPhotoLabel>
+                        <CreateVehicleInputPhoto type="text" placeholder="Foto (URL)" name="photo" disabled />
+                    </div>
                     {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
                     <CreateVehicleSubmitButton type="submit">Cadastrar Veículo</CreateVehicleSubmitButton>
                 </CreateVehicleForm>

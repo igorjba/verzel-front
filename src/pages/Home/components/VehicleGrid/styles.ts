@@ -1,4 +1,4 @@
-import { CaretDown, FunnelSimple } from '@phosphor-icons/react';
+import { CaretDown, FunnelSimple, MapPin } from '@phosphor-icons/react';
 import styled from 'styled-components';
 
 interface StyledFunnelSimpleProps {
@@ -145,6 +145,14 @@ export const VehicleCard = styled.div`
 
   border-radius: 10px;
   border: 1px solid ${(props) => props.theme['colors'].background.secondary};
+
+  transition: transform 0.1s, box-shadow 0.1s;
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+
+&:hover {
+  transform: scale(1.005);
+  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.2);
+}
 `;
 
 export const VehicleAdminButtons = styled.div`
@@ -207,33 +215,94 @@ padding: 0.5rem;
 background-color: ${(props) => props.theme['colors'].background.light};
 `;
 
-export const VehicleName = styled.div`
+export const VehicleDataContainer = styled.div`
 display: flex;
-align-items: center;
+align-items: flex-start;
 justify-content: center;
+flex-direction: column;
+padding: 0.5rem 1rem;
+
+width: 100%;
 
 `;
 
 export const VehicleBrand = styled.div`
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 
 font-weight: 700;
+`;
+
+export const VehicleName = styled.div`
+display: flex;
+align-items: center;
+justify-content: flex-start;
+
+`;
+
+export const VehicleValueContainer = styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+padding: 1rem;
+
+width: 100%;
+border-top: 1px solid ${(props) => props.theme['colors'].background.secondary};
+
+`;
+
+export const VehicleValueTitle = styled.div`
+display: flex;
+align-items: center;
+justify-content: flex-start;
+
+width: 100%;
+
+
 `;
 
 export const VehicleValue = styled.div`
 display: flex;
 align-items: center;
-justify-content: center;
+justify-content: flex-start;
 
 width: 100%;
-border-top: 1px solid ${(props) => props.theme['colors'].background.secondary};
 
 font-weight: 700;
 
-span {
+h1 {
   font-size: 1.75rem;
 }
+`;
+
+export const VehicleLocationContainer = styled.div`
+display: flex;
+justify-content: flex-start;
+padding: 0.5rem 1rem;
+
+width: 100%;
+border-top: 1px solid ${(props) => props.theme['colors'].background.secondary};
+`;
+
+export const StyledMapPin = styled(MapPin)`
+display: flex;
+align-items: center;
+justify-content: center;
+
+width: .875rem;
+height: .875rem;
+margin-right: 0.5rem;
+
+color: ${(props) => props.theme['colors'].text.secondary};
+`;
+
+export const VehicleLocation = styled.span`
+display: flex;
+align-items: center;
+justify-content: center;
+
+font-size: .875rem;
 `;
 
