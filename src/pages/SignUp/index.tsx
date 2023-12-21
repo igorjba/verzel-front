@@ -41,7 +41,7 @@ export function SignUp() {
           <SignUpForm onSubmit={handleSubmit}>
             <SignUpFormTitle>Cadastre-se</SignUpFormTitle>
             <SignUpNameInputContainer>
-              <SignUpNameInputLabel htmlFor="nome">Nome:</SignUpNameInputLabel>
+              <SignUpNameInputLabel htmlFor="nome">Nome <span>*</span></SignUpNameInputLabel>
               <SignUpNameInput
                 id="nome"
                 type="text"
@@ -53,7 +53,7 @@ export function SignUp() {
             </SignUpNameInputContainer>
 
             <SignUpEmailInputContainer>
-              <SignUpEmailInputLabel htmlFor="email">E-mail:</SignUpEmailInputLabel>
+              <SignUpEmailInputLabel htmlFor="email">E-mail <span>*</span></SignUpEmailInputLabel>
               <SignUpEmailInput
                 id="email"
                 type="email"
@@ -65,7 +65,7 @@ export function SignUp() {
             </SignUpEmailInputContainer>
 
             <SignUpPasswordInputContainer>
-              <SignUpPasswordInputLabel htmlFor="senha">Senha:</SignUpPasswordInputLabel>
+              <SignUpPasswordInputLabel htmlFor="senha">Senha <span>*</span></SignUpPasswordInputLabel>
               <SignUpPasswordInput
                 id="senha"
                 type="password"

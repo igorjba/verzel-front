@@ -59,6 +59,10 @@ margin-top: 9.25rem;
 label {
   color: ${(props) => props.theme['colors'].text.primary};
   font-weight: 500;
+
+  span {
+    color: ${(props) => props.theme['colors'].background.danger};
+    }
 }
 
 input {
@@ -177,11 +181,11 @@ export const SignUpButton = styled.button`
   transition: background-color 0.2s;
 
   &:hover {
-    background-color: ${(props) => props.theme['colors'].background.accentReversed};
+opacity: 0.9;
   }
 
   &:active {
-    background-color: ${(props) => props.theme['colors'].background.accent};
+    opacity: 0.8;
     width: 99.5%;
   }
 

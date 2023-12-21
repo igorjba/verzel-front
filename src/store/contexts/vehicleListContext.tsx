@@ -25,6 +25,7 @@ interface VehicleContextType {
     showModal: 'none' | 'create' | 'edit' | 'delete';
     setShowModal: React.Dispatch<React.SetStateAction<'none' | 'create' | 'edit' | 'delete'>>;
     createVehicle: (vehicleData: VehicleData) => Promise<void>;
+    deleteVehicle: (vehicleId: string) => Promise<void>;
 }
 
 interface VehicleProviderProps {
@@ -62,12 +63,23 @@ export function VehicleProvider({ children }: VehicleProviderProps) {
         }
     };
 
+    const deleteVehicle = async (vehicleId: string) => {
+        try {
+            await axios.delete(`http://localhost:3333/vehicles/${vehicleId}`, {
+                headers: { Authorization: `Bearer ${authData?.token}` },
+            });
+            loadVehicles(1, 10, search);
+        } catch (error) {
+            console.error('Erro ao excluir veículo:', error);
+        }
+    };
+
     useEffect(() => {
         loadVehicles(1, 10, search);
     }, [search, loadVehicles]);
 
     return (
-        <VehicleContext.Provider value={{ vehicles, search, setSearch, loadVehicles, showModal, setShowModal, createVehicle }}>
+        <VehicleContext.Provider value={{ vehicles, search, setSearch, loadVehicles, showModal, setShowModal, createVehicle, deleteVehicle }}>
             {children}
         </VehicleContext.Provider>
     );

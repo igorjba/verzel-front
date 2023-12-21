@@ -38,6 +38,14 @@ export const CloseIcon = styled(X)`
     cursor: pointer;
 
     color: ${(props) => props.theme['colors'].text.primary};
+
+    &:hover {
+opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
     `;
 
 export const CreateVehicleFormTitle = styled.h1`
@@ -112,10 +120,20 @@ export const CreateVehicleSubmitButton = styled.button`
     padding: 10px;
     border: none;
     border-radius: 5px;
+
     cursor: pointer;
 
     background-color: ${(props) => props.theme['colors'].background.accent};
     color: ${(props) => props.theme['colors'].text.primaryReversed};
+
+    &:hover {
+opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+    width: 99.5%;
+  }
 `;
 
 

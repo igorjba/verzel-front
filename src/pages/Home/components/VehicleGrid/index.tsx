@@ -1,13 +1,19 @@
 import { PencilSimpleLine, TrashSimple } from '@phosphor-icons/react';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useContextSelector } from 'use-context-selector';
 import fiatLight from "../../../../assets/fiat.svg";
 import { useAuth } from '../../../../store/contexts/authContext';
+import { VehicleContext } from '../../../../store/contexts/vehicleListContext';
 import { useVehiclesList } from '../../../../store/hooks/useVehicleList';
+import { DeleteVehicleModal } from '../DeleteVehicleModal';
 import { DeleteVehicleButton, EditVehicleButton, FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledMapPin, StyledVehicleGrid, TooltipVehicleContainer, VehicleAdminButtons, VehicleBrand, VehicleCard, VehicleDataContainer, VehicleGridContainer, VehicleImage, VehicleLocation, VehicleLocationContainer, VehicleName, VehicleValue, VehicleValueContainer, VehicleValueTitle } from './styles';
 
 
 export function VehicleGrid() {
     const { vehicles, loadVehicles } = useVehiclesList();
+    const [selectedVehicleId, setSelectedVehicleId] = useState<string | null>(null);
+    const setShowModal = useContextSelector(VehicleContext, (context) => context.setShowModal);
+    const showModal = useContextSelector(VehicleContext, (context) => context.showModal);
     const { authData } = useAuth();
 
     useEffect(() => {
@@ -15,6 +21,11 @@ export function VehicleGrid() {
             loadVehicles(1, 9, '');
         }
     }, [vehicles, loadVehicles]);
+
+    const handleDeleteClick = (vehicleId: string) => {
+        setSelectedVehicleId(vehicleId);
+        setShowModal('delete');
+    };
 
     return (
 
@@ -49,7 +60,9 @@ export function VehicleGrid() {
                         {authData?.user.role === 'ADMIN' && (
                             <VehicleAdminButtons>
                                 <EditVehicleButton><PencilSimpleLine size={24} /></EditVehicleButton>
-                                <DeleteVehicleButton><TrashSimple size={24} /></DeleteVehicleButton>
+                                <DeleteVehicleButton onClick={() => handleDeleteClick(vehicle.id)}>
+                                    <TrashSimple size={24} />
+                                </DeleteVehicleButton>
                             </VehicleAdminButtons>
                         )}
                         <VehicleImage src={fiatLight} alt={"SuperFast"} />
@@ -69,6 +82,10 @@ export function VehicleGrid() {
                         </VehicleLocationContainer>
                     </VehicleCard>
                 ))}
+
+                {showModal === 'delete' && selectedVehicleId && (
+                    <DeleteVehicleModal vehicleId={selectedVehicleId} />
+                )}
             </StyledVehicleGrid>
         </VehicleGridContainer>
     );

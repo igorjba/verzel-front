@@ -18,21 +18,23 @@ export function Login() {
         <LoginForm onSubmit={handleSubmit}>
           <LoginFormTitle>Entrar</LoginFormTitle>
           <div>
-            <LoginEmailInputLabel htmlFor="email">E-mail</LoginEmailInputLabel>
+            <LoginEmailInputLabel htmlFor="email">E-mail <span>*</span></LoginEmailInputLabel>
             <LoginEmailInput
               type="email"
               id="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
           <div>
-            <LoginPasswordInputLabel htmlFor="password">Senha</LoginPasswordInputLabel>
+            <LoginPasswordInputLabel htmlFor="password">Senha <span>*</span></LoginPasswordInputLabel>
             <LoginPasswordInput
               type="password"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
           {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
