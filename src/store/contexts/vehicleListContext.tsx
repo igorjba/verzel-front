@@ -1,5 +1,8 @@
+import axios from 'axios';
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { createContext as createContextSelector } from 'use-context-selector';
+import { VehicleData } from '../../@types/vehicle';
+import { useAuth } from './authContext';
 
 interface Vehicle {
     id: string;
@@ -7,7 +10,7 @@ interface Vehicle {
     brand: string;
     model: string;
     value: number;
-    photo: string;
+    photoUrl?: string;
 }
 
 export interface VehiclesResponse {
@@ -19,6 +22,9 @@ interface VehicleContextType {
     search: string;
     setSearch: (search: string) => void;
     loadVehicles: (page: number, limit: number, search: string) => Promise<void>;
+    showModal: 'none' | 'create' | 'edit' | 'delete';
+    setShowModal: React.Dispatch<React.SetStateAction<'none' | 'create' | 'edit' | 'delete'>>;
+    createVehicle: (vehicleData: VehicleData) => Promise<void>;
 }
 
 interface VehicleProviderProps {
@@ -32,6 +38,8 @@ export const VehicleContext = createContextSelector<VehicleContextType>(
 export function VehicleProvider({ children }: VehicleProviderProps) {
     const [vehicles, setVehicles] = useState<Vehicle[] | undefined>(undefined);
     const [search, setSearch] = useState('');
+    const [showModal, setShowModal] = useState<'none' | 'create' | 'edit' | 'delete'>('none');
+    const { authData } = useAuth();
 
     const loadVehicles = useCallback(async (page: number, limit: number, searchParam: string) => {
         try {
@@ -43,12 +51,23 @@ export function VehicleProvider({ children }: VehicleProviderProps) {
         }
     }, [search]);
 
+    const createVehicle = async (vehicleData: VehicleData) => {
+        try {
+            await axios.post('http://localhost:3333/vehicles', vehicleData, {
+                headers: { Authorization: `Bearer ${authData?.token}` },
+            });
+            loadVehicles(1, 10, search);
+        } catch (error) {
+            console.error('Erro ao criar veículo:', error);
+        }
+    };
+
     useEffect(() => {
         loadVehicles(1, 10, search);
     }, [search, loadVehicles]);
 
     return (
-        <VehicleContext.Provider value={{ vehicles, search, setSearch, loadVehicles }}>
+        <VehicleContext.Provider value={{ vehicles, search, setSearch, loadVehicles, showModal, setShowModal, createVehicle }}>
             {children}
         </VehicleContext.Provider>
     );

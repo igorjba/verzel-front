@@ -8,16 +8,12 @@ export const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-
       <Route path="/login" element={
         <LoginProvider>
           <Login />
         </LoginProvider>
       } />
-
       <Route path="/sign-up" element={<SignUp />} />
-      {/* <Route path="admin/vehicles/create" element={<VehicleCreate />} /> */}
-      {/* <Route path="admin/vehicles/edit/:id" element={<VehicleEdit />} /> */}
       {/* <Route path="*" element={<NotFound />} /> */}
     </Routes>
   );
