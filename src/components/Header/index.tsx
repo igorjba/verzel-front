@@ -50,7 +50,7 @@ export function Header() {
     return (
         <HeaderContainer>
             <HeaderContent>
-                <LogoContainer theme={theme} />
+                <LogoContainer theme={theme} onClick={() => handleRedirect('/')} />
                 <TooltipContainer>
                     <HeaderNavbar>
                         <BuyCarButton onClick={() => handleRedirect('')}> Comprar carro</BuyCarButton>

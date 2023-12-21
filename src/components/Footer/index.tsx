@@ -1,13 +1,15 @@
 
+import { useNavigate } from 'react-router-dom';
 import { useContextSelector } from 'use-context-selector';
 import { ThemeContext } from '../../store/contexts/themeContext';
 import { FooterAddress, FooterContainer, FooterContent, FooterNavbar, FooterTermsAddressContainer, FooterTermsNavbar, Line, LogoContainer, LogoNavContainer, NavFirstColumn, NavSecondColumn, TooltipContainer } from './styles';
 
 export function Footer() {
     const theme = useContextSelector(ThemeContext, context => context.theme);
+    const navigate = useNavigate();
 
     const handleRedirect = (url: string) => {
-        window.location.href = url;
+        navigate(url);
     };
 
     return (
@@ -15,7 +17,7 @@ export function Footer() {
             <FooterContent>
                 <TooltipContainer>
                     <LogoNavContainer>
-                        <LogoContainer theme={theme} />
+                        <LogoContainer theme={theme} onClick={() => handleRedirect('/')} />
                         <FooterNavbar>
                             <NavFirstColumn>
                                 <button onClick={() => handleRedirect('')}> Comprar carro</button>

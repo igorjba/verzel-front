@@ -58,6 +58,8 @@ export const LogoContainer = styled.div<LogoContainerProps>`
   background-position-y: top;
   background-repeat: no-repeat;
   background-size: contain;
+
+  cursor: pointer;
 `;
 
 

@@ -46,6 +46,8 @@ export const LogoContainer = styled.div<LogoContainerProps>`
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
+
+  cursor: pointer;
 `
 
 export const TooltipContainer = styled.div`
