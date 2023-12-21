@@ -1,7 +1,7 @@
 import { X } from '@phosphor-icons/react';
 import styled from 'styled-components';
 
-export const CreateVehicleContainer = styled.div`
+export const EditVehicleContainer = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,7 +16,7 @@ export const CreateVehicleContainer = styled.div`
     background: rgba(0, 0, 0, 0.5);
 `;
 
-export const CreateVehicleContent = styled.div`
+export const EditVehicleContent = styled.div`
     padding: 20px;
     border-radius: 10px;
     position: relative;
@@ -48,11 +48,11 @@ opacity: 0.9;
   }
     `;
 
-export const CreateVehicleFormTitle = styled.h1`
+export const EditVehicleFormTitle = styled.h1`
     color: ${(props) => props.theme['colors'].text.primary};
 `;
 
-export const CreateVehicleForm = styled.form`
+export const EditVehicleForm = styled.form`
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -79,25 +79,25 @@ input {
 }
 `;
 
-export const CreateVehicleInputNameLabel = styled.label``;
+export const EditVehicleInputNameLabel = styled.label``;
 
-export const CreateVehicleInputName = styled.input``;
+export const EditVehicleInputName = styled.input``;
 
-export const CreateVehicleInputBrandLabel = styled.label``;
+export const EditVehicleInputBrandLabel = styled.label``;
 
-export const CreateVehicleInputBrand = styled.input``;
+export const EditVehicleInputBrand = styled.input``;
 
-export const CreateVehicleInputModelLabel = styled.label``;
+export const EditVehicleInputModelLabel = styled.label``;
 
-export const CreateVehicleInputModel = styled.input``;
+export const EditVehicleInputModel = styled.input``;
 
-export const CreateVehicleInputValueLabel = styled.label``;
+export const EditVehicleInputValueLabel = styled.label``;
 
-export const CreateVehicleInputValue = styled.input``;
+export const EditVehicleInputValue = styled.input``;
 
-export const CreateVehicleInputPhotoLabel = styled.label``;
+export const EditVehicleInputPhotoLabel = styled.label``;
 
-export const CreateVehicleInputPhoto = styled.input``;
+export const EditVehicleInputPhoto = styled.input``;
 
 export const ErrorMessage = styled.div`
   align-self: center;
@@ -120,7 +120,7 @@ export const ErrorMessage = styled.div`
   }
 `;
 
-export const CreateVehicleSubmitButton = styled.button`
+export const EditVehicleSubmitButton = styled.button`
     padding: 10px;
     border: none;
     border-radius: 5px;

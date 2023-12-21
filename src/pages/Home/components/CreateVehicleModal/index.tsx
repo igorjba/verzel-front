@@ -39,23 +39,23 @@ export const CreateVehicleModal = () => {
                 <CreateVehicleForm onSubmit={handleSubmit}>
                     <CreateVehicleFormTitle>Cadastrar Veículo</CreateVehicleFormTitle>
                     <div>
-                        <CreateVehicleInputNameLabel htmlFor="name">Nome:</CreateVehicleInputNameLabel>
+                        <CreateVehicleInputNameLabel htmlFor="name">Nome <span>*</span></CreateVehicleInputNameLabel>
                         <CreateVehicleInputName type="text" placeholder="Nome" name="name" required />
                     </div>
                     <div>
-                        <CreateVehicleInputBrandLabel htmlFor="brand">Marca:</CreateVehicleInputBrandLabel>
+                        <CreateVehicleInputBrandLabel htmlFor="brand">Marca <span>*</span></CreateVehicleInputBrandLabel>
                         <CreateVehicleInputBrand type="text" placeholder="Marca" name="brand" required />
                     </div>
                     <div>
-                        <CreateVehicleInputModelLabel htmlFor="model">Modelo:</CreateVehicleInputModelLabel>
+                        <CreateVehicleInputModelLabel htmlFor="model">Modelo <span>*</span></CreateVehicleInputModelLabel>
                         <CreateVehicleInputModel type="text" placeholder="Modelo" name="model" required />
                     </div>
                     <div>
-                        <CreateVehicleInputValueLabel htmlFor="value">Valor:</CreateVehicleInputValueLabel>
+                        <CreateVehicleInputValueLabel htmlFor="value">Valor <span>*</span></CreateVehicleInputValueLabel>
                         <CreateVehicleInputValue type="number" placeholder="Valor" name="value" required />
                     </div>
                     <div>
-                        <CreateVehicleInputPhotoLabel htmlFor="photo">Foto:</CreateVehicleInputPhotoLabel>
+                        <CreateVehicleInputPhotoLabel htmlFor="photo">Foto</CreateVehicleInputPhotoLabel>
                         <CreateVehicleInputPhoto type="text" placeholder="Foto (URL)" name="photo" disabled />
                     </div>
                     {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}

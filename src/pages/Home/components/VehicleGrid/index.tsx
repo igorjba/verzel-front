@@ -6,6 +6,7 @@ import { useAuth } from '../../../../store/contexts/authContext';
 import { VehicleContext } from '../../../../store/contexts/vehicleListContext';
 import { useVehiclesList } from '../../../../store/hooks/useVehicleList';
 import { DeleteVehicleModal } from '../DeleteVehicleModal';
+import { EditVehicleModal } from '../EditVehicleModal';
 import { DeleteVehicleButton, EditVehicleButton, FilterButton, FilterContainer, RemoveFiltersButton, RemoveFiltersContainer, ResultsText, SortButton, SortDropdownContainer, SortText, StyledCaretDown, StyledFunnelSimple, StyledMapPin, StyledVehicleGrid, TooltipVehicleContainer, VehicleAdminButtons, VehicleBrand, VehicleCard, VehicleDataContainer, VehicleGridContainer, VehicleImage, VehicleLocation, VehicleLocationContainer, VehicleName, VehicleValue, VehicleValueContainer, VehicleValueTitle } from './styles';
 
 
@@ -25,6 +26,11 @@ export function VehicleGrid() {
     const handleDeleteClick = (vehicleId: string) => {
         setSelectedVehicleId(vehicleId);
         setShowModal('delete');
+    };
+
+    const handleEditClick = (vehicleId: string) => {
+        setSelectedVehicleId(vehicleId);
+        setShowModal('edit');
     };
 
     return (
@@ -59,7 +65,9 @@ export function VehicleGrid() {
                     <VehicleCard key={vehicle.id}>
                         {authData?.user.role === 'ADMIN' && (
                             <VehicleAdminButtons>
-                                <EditVehicleButton><PencilSimpleLine size={24} /></EditVehicleButton>
+                                <EditVehicleButton onClick={() => handleEditClick(vehicle.id)}>
+                                    <PencilSimpleLine size={24} />
+                                </EditVehicleButton>
                                 <DeleteVehicleButton onClick={() => handleDeleteClick(vehicle.id)}>
                                     <TrashSimple size={24} />
                                 </DeleteVehicleButton>
@@ -85,6 +93,9 @@ export function VehicleGrid() {
 
                 {showModal === 'delete' && selectedVehicleId && (
                     <DeleteVehicleModal vehicleId={selectedVehicleId} />
+                )}
+                {showModal === 'edit' && selectedVehicleId && (
+                    <EditVehicleModal vehicleId={selectedVehicleId} />
                 )}
             </StyledVehicleGrid>
         </VehicleGridContainer>
